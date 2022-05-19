@@ -1,15 +1,15 @@
 import { Link as RouterLink } from 'react-router-dom';
-// @mui
 import { styled } from '@mui/material/styles';
 import { Card, Link, Container, Typography } from '@mui/material';
-// hooks
 import useResponsive from '../hooks/useResponsive';
-// components
 import Page from '../components/Page';
 import Logo from '../components/Logo';
-// sections
 import { LoginForm } from '../sections/auth/login';
 import AuthSocial from '../sections/auth/AuthSocial';
+import useConnect from "../hooks/useConnect";
+import {useEffect, useState} from "react";
+// import utils from "../utils";
+import {ConnectorNames} from "../web3/connectors";
 
 // ----------------------------------------------------------------------
 
@@ -58,8 +58,41 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 export default function Login() {
   const smUp = useResponsive('up', 'sm');
-
   const mdUp = useResponsive('up', 'md');
+  // const {t} = useTranslation('common')
+  const {connectWallet, connectSuccess, deactivate} = useConnect();
+  const [wallet, setWallet] = useState(0);
+
+  // useEffect(() => {
+  //   if (utils.getToken() || connectSuccess) router.push(qs.parse(router.query).referrer || '/')
+  // }, [router.query, connectSuccess])
+
+  // useEffect(() => deactivate(), [])
+
+  const listWallet = [
+    {
+      id: 1,
+      img: '/images/metamask.png',
+      name: ConnectorNames.Metamask,
+      desc: 'A browser extension with great flexibility. The web\'s most popular wallet'
+    },
+    {
+      id: 2,
+      img: '/images/wallet-connect.png',
+      name: ConnectorNames.WalletConnect,
+      desc: 'Pair with Trust, Argent, MetaMask  & more. Works from any browser, without an extension'
+    },
+    {
+      id: 3,
+      img: '/images/binance.png',
+      name: ConnectorNames.Binance,
+      desc: ''
+    },
+  ]
+
+  async function connect({name}) {
+    await connectWallet(name)
+  }
 
   return (
     <Page title="Login">
@@ -89,7 +122,7 @@ export default function Login() {
         <Container maxWidth="sm">
           <ContentStyle>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign in to Admin
             </Typography>
 
             <Typography sx={{ color: 'text.secondary', mb: 5 }}>Enter your details below.</Typography>

@@ -1,10 +1,7 @@
 import { useState } from 'react';
-// material
 import { Container, Stack, Typography } from '@mui/material';
-// components
 import Page from '../components/Page';
 import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
-// mock
 import PRODUCTS from '../_mock/products';
 
 // ----------------------------------------------------------------------
@@ -21,10 +18,10 @@ export default function EcommerceShop() {
   };
 
   return (
-    <Page title="Dashboard: Products">
+    <Page title="Dashboard: Assets">
       <Container>
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Products
+          Assets
         </Typography>
 
         <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
