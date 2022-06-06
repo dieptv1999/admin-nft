@@ -1,5 +1,6 @@
 import 'simplebar/src/simplebar.css';
 import './bootstrap';
+import 'react-toastify/dist/ReactToastify.css';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';

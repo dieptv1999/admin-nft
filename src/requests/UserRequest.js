@@ -5,13 +5,19 @@ const schema = 'user';
  * key base on host:port
  */
 export default class UserRequest extends BaseRequest {
-  fetchUserBalances() {
-    const url = `${schema}/balances`;
-    return this.get(url);
+
+  login(params) {
+    const url = `auth/login`;
+    return this.post(url, params);
   }
 
-  login() {
-    const url = `${schema}/login`;
-    return this.get(url);
+  register(params) {
+    const url = `auth/register`;
+    return this.post(url, params);
+  }
+
+  getPermission(params) {
+    const url = `permission/roles`;
+    return this.get(url, params);
   }
 }

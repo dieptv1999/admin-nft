@@ -4,10 +4,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Menu, MenuItem, IconButton, ListItemIcon, ListItemText } from '@mui/material';
 // component
 import Iconify from '../../../components/Iconify';
+import withPermission from "../../../hooks/withPermission";
 
 // ----------------------------------------------------------------------
 
-export default function UserMoreMenu() {
+export default function UserMoreMenu({update = () => {}}) {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,19 +28,26 @@ export default function UserMoreMenu() {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
-        <MenuItem sx={{ color: 'text.secondary' }}>
+        {withPermission(["permission::all"], <MenuItem sx={{color: 'text.secondary'}}>
           <ListItemIcon>
-            <Iconify icon="eva:trash-2-outline" width={24} height={24} />
+            <Iconify icon="eva:trash-2-outline" width={24} height={24}/>
           </ListItemIcon>
-          <ListItemText primary="Delete" primaryTypographyProps={{ variant: 'body2' }} />
-        </MenuItem>
+          <ListItemText primary="Block" primaryTypographyProps={{variant: 'body2'}}/>
+        </MenuItem>)}
 
-        <MenuItem component={RouterLink} to="#" sx={{ color: 'text.secondary' }}>
+        {withPermission(["permission::all"], <MenuItem component={RouterLink} to="#" sx={{ color: 'text.secondary' }}>
           <ListItemIcon>
             <Iconify icon="eva:edit-fill" width={24} height={24} />
           </ListItemIcon>
-          <ListItemText primary="Edit" primaryTypographyProps={{ variant: 'body2' }} />
-        </MenuItem>
+          <ListItemText primary="Unlock" primaryTypographyProps={{ variant: 'body2' }} />
+        </MenuItem>)}
+
+        {withPermission(["permission::user::type::sale"], <MenuItem component={RouterLink} to="#" sx={{ color: 'text.secondary' }}>
+          <ListItemIcon>
+            <Iconify icon="eva:edit-fill" width={24} height={24} />
+          </ListItemIcon>
+          <ListItemText primary="Approve for sale" primaryTypographyProps={{ variant: 'body2' }} />
+        </MenuItem>)}
       </Menu>
     </>
   );

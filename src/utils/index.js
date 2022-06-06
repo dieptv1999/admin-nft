@@ -12,7 +12,8 @@ const getBaseURL = () => {
 };
 
 const logout = () => {
-
+    window.localStorage.clear()
+    window.location.replace('/login')
 }
 
 export default {

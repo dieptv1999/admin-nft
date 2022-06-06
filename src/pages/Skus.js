@@ -8,7 +8,7 @@ import CreateProductForm from "../components/CreateProductForm";
 
 // ----------------------------------------------------------------------
 
-export default function EcommerceShop() {
+export default function Skus() {
   const [openFilter, setOpenFilter] = useState(false);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

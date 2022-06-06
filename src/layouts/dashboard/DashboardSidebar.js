@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import {useEffect} from 'react';
+import {Link as RouterLink, useLocation} from 'react-router-dom';
 // material
-import { styled } from '@mui/material/styles';
-import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@mui/material';
+import {styled} from '@mui/material/styles';
+import {Box, Link, Drawer, Typography, Avatar, Stack} from '@mui/material';
 // mock
 import account from '../../_mock/account';
 // hooks
@@ -14,19 +14,20 @@ import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 //
 import navConfig from './NavConfig';
+import {useSelector} from "react-redux";
 
 // ----------------------------------------------------------------------
 
 const DRAWER_WIDTH = 280;
 
-const RootStyle = styled('div')(({ theme }) => ({
+const RootStyle = styled('div')(({theme}) => ({
   [theme.breakpoints.up('lg')]: {
     flexShrink: 0,
     width: DRAWER_WIDTH,
   },
 }));
 
-const AccountStyle = styled('div')(({ theme }) => ({
+const AccountStyle = styled('div')(({theme}) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(2, 2.5),
@@ -41,8 +42,9 @@ DashboardSidebar.propTypes = {
   onCloseSidebar: PropTypes.func,
 };
 
-export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
-  const { pathname } = useLocation();
+export default function DashboardSidebar({isOpenSidebar, onCloseSidebar}) {
+  const {pathname} = useLocation();
+  const {user} = useSelector(state => state.user)
 
   const isDesktop = useResponsive('up', 'lg');
 
@@ -57,39 +59,39 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
     <Scrollbar
       sx={{
         height: 1,
-        '& .simplebar-content': { height: 1, display: 'flex', flexDirection: 'column' },
+        '& .simplebar-content': {height: 1, display: 'flex', flexDirection: 'column'},
       }}
     >
-      <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        <Logo />
+      <Box sx={{px: 2.5, py: 3, display: 'inline-flex'}}>
+        <Logo/>
       </Box>
 
-      <Box sx={{ mb: 5, mx: 2.5 }}>
+      <Box sx={{mb: 5, mx: 2.5}}>
         <Link underline="none" component={RouterLink} to="/dashboard/profile">
           <AccountStyle>
-            <Avatar src={account.photoURL} alt="photoURL" />
-            <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+            <Avatar src={user?.avatar} alt="photoURL"/>
+            <Box sx={{ml: 2}}>
+              <Typography variant="subtitle2" sx={{color: 'text.primary'}}>
+                {user?.username}
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {account.role}
+              <Typography variant="body2" sx={{color: 'text.secondary'}}>
+                {user?.roles[0]?.name}
               </Typography>
             </Box>
           </AccountStyle>
         </Link>
       </Box>
 
-      <NavSection navConfig={navConfig} />
+      <NavSection navConfig={navConfig}/>
 
-      <Box sx={{ flexGrow: 1 }} />
+      <Box sx={{flexGrow: 1}}/>
 
-      <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
-        <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
+      <Box sx={{px: 2.5, pb: 3, mt: 10}}>
+        <Stack alignItems="center" spacing={3} sx={{pt: 5, borderRadius: 2, position: 'relative'}}>
 
-          <Button href="https://material-ui.com/store/items/minimal-dashboard/" target="_blank" variant="contained">
-            Tutorial
-          </Button>
+          {/* <Button href="https://material-ui.com/store/items/minimal-dashboard/" target="_blank" variant="contained"> */}
+          {/*  Tutorial */}
+          {/* </Button> */}
         </Stack>
       </Box>
     </Scrollbar>
@@ -102,7 +104,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           open={isOpenSidebar}
           onClose={onCloseSidebar}
           PaperProps={{
-            sx: { width: DRAWER_WIDTH },
+            sx: {width: DRAWER_WIDTH},
           }}
         >
           {renderContent}

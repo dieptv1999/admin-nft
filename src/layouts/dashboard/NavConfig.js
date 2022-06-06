@@ -17,8 +17,8 @@ const navConfig = [
     icon: getIcon('eva:people-fill'),
   },
   {
-    title: 'asset',
-    path: '/dashboard/assets',
+    title: 'product',
+    path: '/dashboard/product',
     icon: getIcon('eva:shopping-bag-fill'),
   },
   {
@@ -26,16 +26,21 @@ const navConfig = [
     path: '/dashboard/blog',
     icon: getIcon('eva:file-text-fill'),
   },
-  // {
-  //   title: 'login',
-  //   path: '/login',
-  //   icon: getIcon('eva:lock-fill'),
-  // },
-  // {
-  //   title: 'register',
-  //   path: '/register',
-  //   icon: getIcon('eva:person-add-fill'),
-  // },
+  {
+    title: 'Customer',
+    path: '/dashboard/customer',
+    icon: getIcon('eva:people-fill'),
+  },
+  {
+    title: 'order',
+    path: '/dashboard/order',
+    icon: getIcon('eva:people-fill'),
+  },
+  {
+    title: 'sku',
+    path: '/dashboard/skus',
+    icon: getIcon('eva:shopping-bag-fill'),
+  },
   // {
   //   title: 'Not found',
   //   path: '/404',

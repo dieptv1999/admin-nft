@@ -9,8 +9,23 @@ import Register from './pages/Register';
 import Products from './pages/Products';
 import DashboardApp from './pages/DashboardApp';
 import Profile from "./pages/Profile";
+import constant from "./utils/constant";
+import withPermission from "./hooks/withPermission";
+import Customer from "./pages/Customer";
+import Orders from "./pages/Orders";
+import Setting from "./pages/Setting";
+import Skus from "./pages/Skus";
 
 // ----------------------------------------------------------------------
+
+function withAuth(children) {
+  const token = window.localStorage.getItem(constant.TOKEN)
+  const user = window.localStorage.getItem(constant.USER)
+
+  if (token && user) return children
+    return <Navigate to="/login" replace />
+
+}
 
 export default function Router() {
   return useRoutes([
@@ -18,11 +33,15 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        { path: 'app', element: <DashboardApp /> },
-        { path: 'user', element: <User /> },
-        { path: 'assets', element: <Products /> },
+        { path: 'app', element: withAuth(<DashboardApp />) },
+        { path: 'user', element: withAuth(withPermission(['permission::user::list'],<User />, 'page')) },
+        { path: 'product', element: withAuth(<Products />) },
+        { path: 'skus', element: withAuth(<Skus />) },
+        { path: 'customer', element: withAuth(<Customer />) },
+        { path: 'order', element: withAuth(<Orders />) },
         { path: 'blog', element: <Blog /> },
-        { path: 'profile', element: <Profile />,},
+        { path: 'profile', element: withAuth(<Profile />),},
+        { path: 'setting', element: withAuth(<Setting />),},
       ],
     },
     {

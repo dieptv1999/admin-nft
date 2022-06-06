@@ -2,33 +2,46 @@ import * as Yup from 'yup';
 import { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useFormik, Form, FormikProvider } from 'formik';
-// material
 import { Link, Stack, Checkbox, TextField, IconButton, InputAdornment, FormControlLabel } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
-// component
 import Iconify from '../../../components/Iconify';
+import {useDispatch} from "react-redux";
+import actions from "../../../redux/actions/user";
+import {debounce} from "lodash";
 
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string().email('Email must be a valid email address').required('Email is required'),
-    password: Yup.string().required('Password is required'),
+    username: Yup.string()
+      .min(4, 'Must be at least 8 characters')
+      .max(20, 'Must be less  than 20 characters')
+      .required('Username is required'),
+    password: Yup.string()
+      .min(4, 'Must be at least 8 characters')
+      .max(20, 'Must be less  than 20 characters')
+      .required('Password is required'),
   });
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      username: '',
       password: '',
       remember: true,
     },
     validationSchema: LoginSchema,
-    onSubmit: () => {
-      navigate('/dashboard', { replace: true });
+    onSubmit: (values) => {
+      dispatch(actions.login({
+        "username": values?.username,
+        "password": values?.password,
+      }, () => {
+        setTimeout(() => navigate('/dashboard/app', { replace: true }), 500);
+      }))
     },
   });
 
@@ -45,11 +58,11 @@ export default function LoginForm() {
           <TextField
             fullWidth
             autoComplete="username"
-            type="email"
-            label="Email address"
-            {...getFieldProps('email')}
-            error={Boolean(touched.email && errors.email)}
-            helperText={touched.email && errors.email}
+            type="username"
+            label="Username"
+            {...getFieldProps('username')}
+            error={Boolean(touched.username && errors.username)}
+            helperText={touched.username && errors.username}
           />
 
           <TextField
@@ -83,7 +96,11 @@ export default function LoginForm() {
           </Link>
         </Stack>
 
-        <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
+        <LoadingButton fullWidth size="large"
+                       type="submit"
+                       variant="contained"
+                       className="bg-[#2065D1]"
+                       loading={isSubmitting}>
           Login
         </LoadingButton>
       </Form>
