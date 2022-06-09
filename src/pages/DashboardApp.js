@@ -17,6 +17,8 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
+import BumpChart from "../components/chart/BumpChart";
+import BarChart from "../components/chart/BarChart";
 
 // ----------------------------------------------------------------------
 
@@ -207,6 +209,414 @@ export default function DashboardApp() {
                 { id: '5', label: 'Sprint Showcase' },
               ]}
             />
+          </Grid>
+          <Grid item className="h-[500px] w-full">
+            <BumpChart data={[
+              {
+                "id": "Samsung Smoothtop Range",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 3
+                  },
+                  {
+                    "x": 2001,
+                    "y": 9
+                  },
+                  {
+                    "x": 2002,
+                    "y": 11
+                  },
+                  {
+                    "x": 2003,
+                    "y": 9
+                  },
+                  {
+                    "x": 2004,
+                    "y": 7
+                  }
+                ]
+              },
+              {
+                "id": "Serie 2",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 8
+                  },
+                  {
+                    "x": 2001,
+                    "y": 2
+                  },
+                  {
+                    "x": 2002,
+                    "y": 8
+                  },
+                  {
+                    "x": 2003,
+                    "y": 3
+                  },
+                  {
+                    "x": 2004,
+                    "y": 12
+                  }
+                ]
+              },
+              {
+                "id": "Serie 3",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 2
+                  },
+                  {
+                    "x": 2001,
+                    "y": 4
+                  },
+                  {
+                    "x": 2002,
+                    "y": 12
+                  },
+                  {
+                    "x": 2003,
+                    "y": 7
+                  },
+                  {
+                    "x": 2004,
+                    "y": 1
+                  }
+                ]
+              },
+              {
+                "id": "Serie 4",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 6
+                  },
+                  {
+                    "x": 2001,
+                    "y": 5
+                  },
+                  {
+                    "x": 2002,
+                    "y": 2
+                  },
+                  {
+                    "x": 2003,
+                    "y": 1
+                  },
+                  {
+                    "x": 2004,
+                    "y": 9
+                  }
+                ]
+              },
+              {
+                "id": "Serie 5",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 5
+                  },
+                  {
+                    "x": 2001,
+                    "y": 12
+                  },
+                  {
+                    "x": 2002,
+                    "y": 4
+                  },
+                  {
+                    "x": 2003,
+                    "y": 10
+                  },
+                  {
+                    "x": 2004,
+                    "y": 4
+                  }
+                ]
+              },
+              {
+                "id": "Serie 6",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 7
+                  },
+                  {
+                    "x": 2001,
+                    "y": 10
+                  },
+                  {
+                    "x": 2002,
+                    "y": 10
+                  },
+                  {
+                    "x": 2003,
+                    "y": 5
+                  },
+                  {
+                    "x": 2004,
+                    "y": 10
+                  }
+                ]
+              },
+              {
+                "id": "Serie 7",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 10
+                  },
+                  {
+                    "x": 2001,
+                    "y": 1
+                  },
+                  {
+                    "x": 2002,
+                    "y": 7
+                  },
+                  {
+                    "x": 2003,
+                    "y": 8
+                  },
+                  {
+                    "x": 2004,
+                    "y": 11
+                  }
+                ]
+              },
+              {
+                "id": "Serie 8",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 12
+                  },
+                  {
+                    "x": 2001,
+                    "y": 11
+                  },
+                  {
+                    "x": 2002,
+                    "y": 3
+                  },
+                  {
+                    "x": 2003,
+                    "y": 2
+                  },
+                  {
+                    "x": 2004,
+                    "y": 3
+                  }
+                ]
+              },
+              {
+                "id": "Serie 9",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 4
+                  },
+                  {
+                    "x": 2001,
+                    "y": 6
+                  },
+                  {
+                    "x": 2002,
+                    "y": 5
+                  },
+                  {
+                    "x": 2003,
+                    "y": 4
+                  },
+                  {
+                    "x": 2004,
+                    "y": 6
+                  }
+                ]
+              },
+              {
+                "id": "Serie 10",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 11
+                  },
+                  {
+                    "x": 2001,
+                    "y": 8
+                  },
+                  {
+                    "x": 2002,
+                    "y": 1
+                  },
+                  {
+                    "x": 2003,
+                    "y": 11
+                  },
+                  {
+                    "x": 2004,
+                    "y": 8
+                  }
+                ]
+              },
+              {
+                "id": "Serie 11",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 1
+                  },
+                  {
+                    "x": 2001,
+                    "y": 7
+                  },
+                  {
+                    "x": 2002,
+                    "y": 6
+                  },
+                  {
+                    "x": 2003,
+                    "y": 12
+                  },
+                  {
+                    "x": 2004,
+                    "y": 2
+                  }
+                ]
+              },
+              {
+                "id": "Serie 12",
+                "data": [
+                  {
+                    "x": 2000,
+                    "y": 9
+                  },
+                  {
+                    "x": 2001,
+                    "y": 3
+                  },
+                  {
+                    "x": 2002,
+                    "y": 9
+                  },
+                  {
+                    "x": 2003,
+                    "y": 6
+                  },
+                  {
+                    "x": 2004,
+                    "y": 5
+                  }
+                ]
+              }
+            ]}/>
+          </Grid>
+          <Grid item className="h-[800px] w-full">
+            <BarChart data={[
+              {
+                "country": "AD",
+                "hot dog": 174,
+                "hot dogColor": "hsl(211, 70%, 50%)",
+              },
+              {
+                "country": "AE",
+                "hot dog": 187,
+                "hot dogColor": "hsl(90, 70%, 50%)",
+              },
+              {
+                "country": "AF",
+                "hot dog": 66,
+                "hot dogColor": "hsl(58, 70%, 50%)",
+              },
+              {
+                "country": "AG",
+                "hot dog": 111,
+                "hot dogColor": "hsl(6, 70%, 50%)",
+              },
+              {
+                "country": "AI",
+                "hot dog": 77,
+                "hot dogColor": "hsl(237, 70%, 50%)",
+              },
+              {
+                "country": "AL",
+                "hot dog": 132,
+                "hot dogColor": "hsl(213, 70%, 50%)",
+              },
+              {
+                "country": "AM",
+                "hot dog": 148,
+                "hot dogColor": "hsl(168, 70%, 50%)",
+              },
+              {
+                "country": "BI",
+                "hot dog": 77,
+                "hot dogColor": "hsl(237, 70%, 50%)",
+              },
+              {
+                "country": "BL",
+                "hot dog": 132,
+                "hot dogColor": "hsl(213, 70%, 50%)",
+              },
+              {
+                "country": "BM",
+                "hot dog": 148,
+                "hot dogColor": "hsl(168, 70%, 50%)",
+              },
+              {
+                "country": "CD",
+                "hot dog": 174,
+                "hot dogColor": "hsl(211, 70%, 50%)",
+              },
+              {
+                "country": "CE",
+                "hot dog": 187,
+                "hot dogColor": "hsl(90, 70%, 50%)",
+              },
+              {
+                "country": "CF",
+                "hot dog": 66,
+                "hot dogColor": "hsl(58, 70%, 50%)",
+              },
+              {
+                "country": "CG",
+                "hot dog": 111,
+                "hot dogColor": "hsl(6, 70%, 50%)",
+              },
+              {
+                "country": "CI",
+                "hot dog": 77,
+                "hot dogColor": "hsl(237, 70%, 50%)",
+              },
+              {
+                "country": "CL",
+                "hot dog": 132,
+                "hot dogColor": "hsl(213, 70%, 50%)",
+              },
+              {
+                "country": "CM",
+                "hot dog": 148,
+                "hot dogColor": "hsl(168, 70%, 50%)",
+              },
+              {
+                "country": "CI",
+                "hot dog": 77,
+                "hot dogColor": "hsl(237, 70%, 50%)",
+              },
+              {
+                "country": "CL",
+                "hot dog": 132,
+                "hot dogColor": "hsl(213, 70%, 50%)",
+              },
+              {
+                "country": "CM",
+                "hot dog": 148,
+                "hot dogColor": "hsl(168, 70%, 50%)",
+              }
+            ]}/>
           </Grid>
         </Grid>
       </Container>
